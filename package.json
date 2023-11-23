@@ -1,12 +1,15 @@
 {
   "name": "@cotter45/pg-fullservice",
-  "version": "1.0.0",
+  "version": "0.0.13",
   "description": "Full service postgreSQL server and client code generator for Typescript, Javascript, and Node.JS.",
   "main": "lib/index.js",
   "types": "lib/index",
   "files": [
     "lib"
   ],
+  "bin": {
+    "pg-fullservice": "./lib/index.js"
+  },
   "author": "Sean Cotter <cotter.github45@gmail.com>",
   "license": "MIT",
   "publishConfig": {
@@ -14,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://"
+    "url": "https://github.com/Cotter45/pg-fullservice"
   },
   "bugs": {
-    "url": "https://"
+    "url": "https://github.com/Cotter45/pg-fullservice/issues"
   },
-  "homepage": "https://",
+  "homepage": "https://github.com/Cotter45/pg-fullservice",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.{ts,js}'",
@@ -31,10 +34,10 @@
     "test:clear": "jest --clearCache",
     "test:coverage": "jest --coverage --watchAll=false --detectOpenHandles",
     "update": "ncu -u && npm install",
-    "prepare": "npm run build && cp package.json lib/package.json && cp README.md dist/README.md",
-    "prepublishOnly": "npm run test:coverage && npm run lint:check && npm run format:check && node bump.js",
+    "prepare": "npm run lint && npm run format && npm run build",
+    "prepublishOnly": "npm run prepare && npm run lint:check && npm run format:check && node bump.js",
     "preversion": "npm run lint:check",
-    "start": "src/index.js",
+    "start": "node lib/index.js",
     "version": "npm run format:check && git add -A src",
     "postversion": "git push && git push --tags"
   },

@@ -17,7 +17,7 @@ module.exports = {
     jest: true,
   },
   // ignore anything not in src
-  ignorePatterns: ['**/*.*', '!src/**/*.*'],
+  ignorePatterns: ['**/*.*', 'lib/**/*', '!src/**/*.*'],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

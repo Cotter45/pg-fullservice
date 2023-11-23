@@ -2,8 +2,5 @@ node_modules
 coverage
 .github
 
-/build
-/public/build
+/lib
 .env
-
-/dist
