@@ -1,0 +1,3465 @@
+{
+  "b2b_coffees": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "release_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "tube_selection",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "box_count",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "tube_count",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "box_price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "tube_price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "intensity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "roastiness",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "acidity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "bitterness",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "body",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "origin",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "roasting",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "aromatic_profile",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "cup_sizes",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "profile_tags",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "note_tags",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "recipes",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_category_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "coffee_categories"
+    },
+    {
+      "column_name": "limited_edition",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "best_seller",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "is_new",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "taste_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "b2c_original_coffees": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "release_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "capsule_price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sleeve_price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "intensity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "roastiness",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "acidity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "bitterness",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "body",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "origin",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "roasting",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "aromatic_profile",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "cup_sizes",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "profile_tags",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "note_tags",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "recipes",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_category_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "coffee_categories"
+    },
+    {
+      "column_name": "limited_edition",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "best_seller",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "is_new",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "taste_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "previous_sku",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "product_url",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "product_collection",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "b2c_vertuo_coffees": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "release_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "capsule_price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sleeve_price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "intensity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "roastiness",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "acidity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "bitterness",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "body",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "origin",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "roasting",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "aromatic_profile",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "cup_sizes",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "profile_tags",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "note_tags",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "recipes",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_category_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "coffee_categories"
+    },
+    {
+      "column_name": "limited_edition",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "best_seller",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "is_new",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "taste_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "previous_sku",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "product_url",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "product_collection",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "boutique_images": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "frequency_count",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "boutiques"
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "b2c_original_machines": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "model",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "color",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_partner",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "bundle_sku",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "serial_number_mask",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "nessoft_type",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "international_code",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "warranty_length",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "water_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "milk_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "used_capsule_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "serving_size",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "prep_time",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "temperature",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "pressure",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "volts",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "hertz",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "watts",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "height",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "width",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "depth",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_length",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_weight",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "flashcard",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "descale",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_manual",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "included",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "features",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "parts",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "maintenance",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "test",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "usage",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "descaling_guide",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "product_url",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "ts_id",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "boutique_types": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_type_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_type_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "b2c_vertuo_machines": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "model",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "color",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_partner",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "bundle_sku",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "serial_number_mask",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "nessoft_type",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "international_code",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "warranty_length",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "water_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "milk_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "used_capsule_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "serving_size",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "prep_time",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "temperature",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "pressure",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "volts",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "hertz",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "watts",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "height",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "width",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "depth",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_length",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_weight",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "flashcard",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "descale",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_manual",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "included",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "features",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "parts",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "maintenance",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "test",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "usage",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "descaling_guide",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "product_url",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "ts_id",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "b2b_machines": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "model",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "color",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_partner",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "serial_number_mask",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "nessoft_type",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "international_code",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "warranty_length",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "water_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "milk_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "used_capsule_capacity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "serving_size",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "prep_time",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "temperature",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "pressure",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "volts",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "hertz",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "watts",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "height",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "width",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "depth",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_length",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_weight",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "flashcard",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "descale",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "machine_manual",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "included",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "features",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "parts",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "accessory_collections": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "collection_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "collection_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "release_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "coe_services": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coe_service_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coe_service_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "boutiques": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_type_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "boutique_types"
+    },
+    {
+      "column_name": "primary_address_line1",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "primary_address_line2",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "secondary_address_line1",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "secondary_address_line2",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "primary_city",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "secondary_city",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_state",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "primary_postal_code",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "secondary_postal_code",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "latitude",
+      "data_type": "double precision",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "longitude",
+      "data_type": "double precision",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_abbrev",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "phone_number",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "email",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boutique_hours",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "thumbnail_image",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "coffee_categories": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "category_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "category_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "release_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "documents": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "document_name",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "document_type",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "document_url",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "is_public",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "facilities": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "facility_type",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "facility_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "facility_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "primary_address_line1",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "primary_address_line2",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "primary_address_line3",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "city",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "state",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "postal_code",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "latitude",
+      "data_type": "double precision",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "longitude",
+      "data_type": "double precision",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "faq_images": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "frequency_count",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "faq_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "recipe_ingredients_union": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "recipe_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "recipes"
+    },
+    {
+      "column_name": "ingredient_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "recipe_ingredients": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "name",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "quantity",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "allergens",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "recipe_steps": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "recipe_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "recipes"
+    },
+    {
+      "column_name": "step",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "step_num",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "promotions": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "promotion_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "promotion_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "p_start_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "p_end_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "third_party_id",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "tags",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "promotion_reqs",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "promotion_codes",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "product_type",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "btq_only",
+      "data_type": "integer",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "channel",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "target_audience",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "communication",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sales_channels",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "recipe_coffee_union": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "recipe_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "recipes"
+    },
+    {
+      "column_name": "b2c_vertuo_coffee_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_vertuo_coffees"
+    },
+    {
+      "column_name": "b2c_original_coffee_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_original_coffees"
+    },
+    {
+      "column_name": "b2b_coffee_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2b_coffees"
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "faq_categories": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "category",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "category_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "faqs": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "parent_faq_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "question",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "answer",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "frequency_count",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "faq_category_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "faq_categories"
+    },
+    {
+      "column_name": "boutique_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "boutiques"
+    },
+    {
+      "column_name": "b2b_machines_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2b_machines"
+    },
+    {
+      "column_name": "b2c_original_machines_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_original_machines"
+    },
+    {
+      "column_name": "b2c_vertuo_machines_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_vertuo_machines"
+    },
+    {
+      "column_name": "b2b_coffees_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2b_coffees"
+    },
+    {
+      "column_name": "b2c_original_coffees_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_original_coffees"
+    },
+    {
+      "column_name": "b2c_vertuo_coffees_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_vertuo_coffees"
+    },
+    {
+      "column_name": "promotions_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "accessories_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "collections_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coeservice_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "thumbnail_image",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "use_doc_as_primary_answer",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "primary_doc_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "documents"
+    },
+    {
+      "column_name": "has_multiple_docs",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "accessories": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "accessory_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "accessory_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "quantity",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "movement_code",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "release_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinue_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "ingredients",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "allergens",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "included",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "variations",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "additional_details",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "part_of_collection",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "collection_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": true,
+      "referenced_table_name": "accessory_collections"
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "recipes": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "name",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "time",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "difficulty",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "tags",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "notes",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "b2c_original_coffee_packs": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sku",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_pack_name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "coffee_pack_description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "active",
+      "data_type": "boolean",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "img",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "webpage",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "technology",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "release_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "discontinued_date",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sleeve_price",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "origin",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "cup_sizes",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "profile_tags",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "note_tags",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "recipes",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "b2c_original_coffee_packs_coffees": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "pack_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_original_coffee_packs"
+    },
+    {
+      "column_name": "coffee_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "b2c_original_coffees"
+    },
+    {
+      "column_name": "accessory_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "items",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "sleeves",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "boxes",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "capsules",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated_by",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "last_updated",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "is_foreign_key": false,
+      "referenced_table_name": null
+    }
+  ],
+  "faq_doc_union": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": null
+    },
+    {
+      "column_name": "document_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "documents"
+    },
+    {
+      "column_name": "faq_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "is_foreign_key": true,
+      "referenced_table_name": "faqs"
+    }
+  ]
+}

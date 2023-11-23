@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "module": "nodenext",
+    "target": "es6",
+    "declaration": true,
+    "strict": true
+  },
+  "include": ["src", "fuse.d.ts"],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
