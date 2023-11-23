@@ -4,12 +4,14 @@
 
 `@cotter45/pg-fullservice` is a full-service PostgreSQL server and client code generator for Typescript, Javascript, and Node.JS. It generates query models for projects using Joi and PostgreSQL queries instead of an ORM. It can generate files in TypeScript or JavaScript for the client or API and is framework agnostic.
 
+**NOTE:** This is not a full ORM. It is a code generator for PostgreSQL queries and Joi validation models, simply meant to save time writing boilerplate code especially in Typescript projects.
+
 ## Installation
 
 You can use `npx` to run this package without installing it:
 
 ```bash
-npx pg-fullservice
+npx @cotter45/pg-fullservice
 ```
 
 ## Usage

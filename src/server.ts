@@ -627,6 +627,7 @@ function generateJavascriptClass(
   classContent += `     * Get many ${className}s\n`;
   classContent += `     * @param {number[]} ids\n`;
   classContent += `     * @returns {${className}[] | { message: string }}\n`;
+  classContent += `     */\n`;
 
   classContent += `    static async getMany(ids) {\n`;
   classContent += `        const client = this.connectDB();\n`;
