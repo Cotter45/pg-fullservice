@@ -4,6 +4,7 @@ DS_Store
 coverage
 db
 dist
+lib
 node_modules
 
 package-lock.json
