@@ -26,7 +26,7 @@ This project depends on the inquirer npm package and has peer dependencies of jo
 
 ## Contact
 
-For any issues, please visit the [GitHub repository]().
+For any issues, please visit the [GitHub repository](https://github.com/Cotter45/pg-fullservice/issues).
 
 ## License
 
