@@ -3,7 +3,6 @@ import fs from 'fs';
 import { convertDBTypeToTsType, snakeToPascal, typeToValue } from './util';
 
 import type { MappedSpec, Schema, Spec } from './types';
-// process.env.DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/postgres?schema=public';
 
 function generateDbFile(path: string, lang: string) {
   if (lang === 'ts') {
