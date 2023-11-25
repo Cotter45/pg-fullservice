@@ -1,6 +1,6 @@
 {
   "name": "@cotter45/pg-fullservice",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Full service postgreSQL server and client code generator for Typescript, Javascript, and Node.JS.",
   "main": "lib/index.js",
   "types": "lib/index",

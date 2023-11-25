@@ -3,6 +3,63 @@ import fs from 'fs';
 import { convertDBTypeToTsType, snakeToPascal, typeToValue } from './util';
 
 import type { MappedSpec, Schema, Spec } from './types';
+// process.env.DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/postgres?schema=public';
+
+function generateDbFile(path: string, lang: string) {
+  if (lang === 'ts') {
+    let dbFile = `import { Pool } from 'pg';\n\n`;
+
+    dbFile += `const pool = new Pool({\n`;
+    dbFile += `    connectionString: process.env.DATABASE_URL,\n`;
+    dbFile += `});\n\n`;
+
+    dbFile += `async function dbQuery<T>({ text, values }: { text: string; values: any[] }) {\n`;
+    dbFile += `    const client = await pool.connect();\n`;
+    dbFile += `    try {\n`;
+    dbFile += `        const result = await client.query<T>(text, values);\n`;
+    dbFile += `        if (result.rows.length === 0) {\n`;
+    dbFile += `            return null;\n`;
+    dbFile += `        }\n`;
+    dbFile += `        return result.rows;\n`;
+    dbFile += `    } catch (error) {\n`;
+    dbFile += `        return null;\n`;
+    dbFile += `    } finally {\n`;
+    dbFile += `        client.release();\n`;
+    dbFile += `    }\n`;
+    dbFile += `}\n\n`;
+
+    dbFile += `export { dbQuery, pool };`;
+
+    fs.writeFileSync(`${path}/db.ts`, dbFile);
+  }
+
+  if (lang === 'js') {
+    let dbFile = `const { Pool } = require('pg');\n\n`;
+
+    dbFile += `const pool = new Pool({\n`;
+    dbFile += `    connectionString: process.env.DATABASE_URL,\n`;
+    dbFile += `});\n\n`;
+
+    dbFile += `async function dbQuery({ text, values }) {\n`;
+    dbFile += `    const client = await pool.connect();\n`;
+    dbFile += `    try {\n`;
+    dbFile += `        const result = await client.query(text, values);\n`;
+    dbFile += `        if (result.rows.length === 0) {\n`;
+    dbFile += `            return null;\n`;
+    dbFile += `        }\n`;
+    dbFile += `        return result.rows;\n`;
+    dbFile += `    } catch (error) {\n`;
+    dbFile += `        return null;\n`;
+    dbFile += `    } finally {\n`;
+    dbFile += `        client.release();\n`;
+    dbFile += `    }\n`;
+    dbFile += `}\n\n`;
+
+    dbFile += `module.exports = { dbQuery, pool };`;
+
+    fs.writeFileSync(`${path}/db.js`, dbFile);
+  }
+}
 
 function generateTypescriptClass(
   schema: {
@@ -11,7 +68,17 @@ function generateTypescriptClass(
   },
   path: string,
 ) {
-  const className = snakeToPascal(schema.tableName);
+  let className = snakeToPascal(schema.tableName);
+
+  if (className.endsWith('s')) {
+    className = className.slice(0, -1);
+  } else if (className.endsWith('ies')) {
+    className = className.slice(0, -3) + 'y';
+  } else if (className.endsWith('ches')) {
+    className = className.slice(0, -2);
+  } else if (className.endsWith('oes')) {
+    className = className.slice(0, -2);
+  }
 
   const createValidator = `const ${className}Validator = Joi.object({
     ${schema.columns
@@ -27,13 +94,14 @@ function generateTypescriptClass(
       .filter((column) => {
         return (
           column.name !== 'id' &&
-          column.name !== 'created_at' &&
-          column.name !== 'updated_at'
+          !column.name.includes('created') &&
+          !column.name.includes('updated') &&
+          !column.name.includes('deleted')
         );
       })
       .map((column) => {
         let validator = `${column.name}: `;
-        if (column.isNullable) {
+        if (column.isNullable === 'YES') {
           validator += `Joi.${convertDBTypeToTsType(
             column.type,
           ).toLowerCase()}().allow(null).allow('')`;
@@ -75,7 +143,7 @@ function generateTypescriptClass(
 });`;
 
   let classContent = `import Joi from 'joi';\n`;
-  classContent += `import { Client } from 'pg';\n\n`;
+  classContent += `import { dbQuery } from './db';\n\n`;
 
   classContent += `/**\n`;
   classContent += ` * ${className} Model\n`;
@@ -99,20 +167,6 @@ function generateTypescriptClass(
   classContent += `\n    constructor(init?: Partial<${className}>) {\n`;
   classContent += `        Object.assign(this, init);\n    }\n\n`;
 
-  // Static
-
-  // Connect DB
-  classContent += `    /**\n`;
-  classContent += `     * Connect to the database\n`;
-  classContent += `     * @returns {Client}\n`;
-  classContent += `     */\n`;
-
-  classContent += `    private static connectDB() {\n`;
-  classContent += `        return new Client({\n`;
-  classContent += `            connectionString: process.env.DATABASE_URL,\n`;
-  classContent += `        });\n`;
-  classContent += `    }\n\n`;
-
   // CRUD Operations
 
   // Create
@@ -128,7 +182,7 @@ function generateTypescriptClass(
   classContent += `        if (error) {\n`;
   classContent += `            return { message: error.message };\n`;
   classContent += `        }\n\n`;
-  classContent += `        const client = this.connectDB();\n`;
+
   classContent += `        const query = {\n`;
   classContent += `            text: 'INSERT INTO ${
     schema.tableName
@@ -177,15 +231,11 @@ function generateTypescriptClass(
     .map((column) => `data.${column.name} || ${typeToValue(column.type)}`)
     .join(', ')}]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0];\n`;
-  classContent += `        } catch (error: any) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery<${className}>(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not create ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   // Read
@@ -196,20 +246,15 @@ function generateTypescriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async read(id: number): Promise<${className} | { message: string }> {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} WHERE id = $1',\n`;
   classContent += `            values: [id]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0]\n`;
-  classContent += `        } catch (error: any) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery<${className}>(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   // Paginate
@@ -221,20 +266,15 @@ function generateTypescriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async paginate(page: number, limit: number): Promise<${className}[] | { message: string }> {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} ORDER BY id DESC LIMIT $1 OFFSET $2',\n`;
   classContent += `            values: [limit, (page - 1) * limit]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows\n`;
-  classContent += `        } catch (error: any) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery<${className}>(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result;\n`;
   classContent += `    }\n\n`;
 
   // Get Many
@@ -245,20 +285,15 @@ function generateTypescriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async getMany(ids: number[]): Promise<${className}[] | { message: string }> {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} WHERE id = ANY($1)',\n`;
   classContent += `            values: [ids]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows\n`;
-  classContent += `        } catch (error: any) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery<${className}>(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result;\n`;
   classContent += `    }\n\n`;
 
   // Get All
@@ -268,20 +303,15 @@ function generateTypescriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async getAll(): Promise<${className}[] | { message: string }> {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} ORDER BY id DESC',\n`;
   classContent += `            values: []\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows\n`;
-  classContent += `        } catch (error: any) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery<${className}>(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result;\n`;
   classContent += `    }\n\n`;
 
   // Update
@@ -297,7 +327,6 @@ function generateTypescriptClass(
   classContent += `        if (error) {\n`;
   classContent += `            return { message: error.message };\n`;
   classContent += `        }\n\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'UPDATE ${
     schema.tableName
@@ -332,15 +361,11 @@ function generateTypescriptClass(
     .map((column) => `data.${column.name} || ${typeToValue(column.type)}`)
     .join(', ')}, data.id]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0]\n`;
-  classContent += `        } catch (error: any) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery<${className}>(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not update ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   // Delete
@@ -351,20 +376,15 @@ function generateTypescriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async delete(id: number): Promise<${className} | { message: string }> {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'DELETE FROM ${schema.tableName} WHERE id = $1 RETURNING *',\n`;
   classContent += `            values: [id]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0]\n`;
-  classContent += `        } catch (error: any) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery<${className}>(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not delete ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   classContent += `}\n\n`;
@@ -394,6 +414,8 @@ export const generateTypescriptServer = (schemaFile: Schema, path: string) => {
       },
       path,
     );
+
+    generateDbFile(path, 'ts');
   }
 };
 
@@ -404,7 +426,17 @@ function generateJavascriptClass(
   },
   path: string,
 ) {
-  const className = snakeToPascal(schema.tableName);
+  let className = snakeToPascal(schema.tableName);
+
+  if (className.endsWith('s')) {
+    className = className.slice(0, -1);
+  } else if (className.endsWith('ies')) {
+    className = className.slice(0, -3) + 'y';
+  } else if (className.endsWith('ches')) {
+    className = className.slice(0, -2);
+  } else if (className.endsWith('oes')) {
+    className = className.slice(0, -2);
+  }
 
   const createValidator = `const ${className}Validator = Joi.object({
     ${schema.columns
@@ -420,13 +452,14 @@ function generateJavascriptClass(
       .filter((column) => {
         return (
           column.name !== 'id' &&
-          column.name !== 'created_at' &&
-          column.name !== 'updated_at'
+          !column.name.includes('created') &&
+          !column.name.includes('updated') &&
+          !column.name.includes('deleted')
         );
       })
       .map((column) => {
         let validator = `${column.name}: `;
-        if (column.isNullable) {
+        if (column.isNullable === 'YES') {
           validator += `Joi.${convertDBTypeToTsType(
             column.type,
           ).toLowerCase()}().allow(null).allow('')`;
@@ -468,7 +501,7 @@ function generateJavascriptClass(
 });`;
 
   let classContent = `const Joi = require('joi');\n`;
-  classContent += `const { Client } = require('pg');\n\n`;
+  classContent += `const { dbQuery } = require('./db');\n\n`;
 
   classContent += `/**\n`;
   classContent += ` * ${className} Model\n`;
@@ -483,20 +516,6 @@ function generateJavascriptClass(
 
   classContent += `\n    constructor(init) {\n`;
   classContent += `        Object.assign(this, init);\n    }\n\n`;
-
-  // Static
-
-  // Connect DB
-  classContent += `    /**\n`;
-  classContent += `     * Connect to the database\n`;
-  classContent += `     * @returns {Client}\n`;
-  classContent += `     */\n`;
-
-  classContent += `    static connectDB() {\n`;
-  classContent += `        return new Client({\n`;
-  classContent += `            connectionString: process.env.DATABASE_URL,\n`;
-  classContent += `        });\n`;
-  classContent += `    }\n\n`;
 
   // CRUD Operations
 
@@ -513,7 +532,6 @@ function generateJavascriptClass(
   classContent += `        if (error) {\n`;
   classContent += `            return { message: error.message };\n`;
   classContent += `        }\n\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'INSERT INTO ${
     schema.tableName
@@ -562,15 +580,11 @@ function generateJavascriptClass(
     .map((column) => `data.${column.name} || ${typeToValue(column.type)}`)
     .join(', ')}]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0];\n`;
-  classContent += `        } catch (error) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not create ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   // Read
@@ -581,20 +595,15 @@ function generateJavascriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async read(id) {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} WHERE id = $1',\n`;
   classContent += `            values: [id]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0]\n`;
-  classContent += `        } catch (error) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   // Paginate
@@ -606,20 +615,15 @@ function generateJavascriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async paginate(page, limit) {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} ORDER BY id DESC LIMIT $1 OFFSET $2',\n`;
   classContent += `            values: [limit, (page - 1) * limit]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows\n`;
-  classContent += `        } catch (error) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result;\n`;
   classContent += `    }\n\n`;
 
   // Get Many
@@ -630,20 +634,15 @@ function generateJavascriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async getMany(ids) {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} WHERE id = ANY($1)',\n`;
   classContent += `            values: [ids]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows\n`;
-  classContent += `        } catch (error) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result;\n`;
   classContent += `    }\n\n`;
 
   // Get All
@@ -653,20 +652,15 @@ function generateJavascriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async getAll() {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'SELECT * FROM ${schema.tableName} ORDER BY id DESC',\n`;
   classContent += `            values: []\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows\n`;
-  classContent += `        } catch (error) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not find ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result;\n`;
   classContent += `    }\n\n`;
 
   // Update
@@ -682,7 +676,6 @@ function generateJavascriptClass(
   classContent += `        if (error) {\n`;
   classContent += `            return { message: error.message };\n`;
   classContent += `        }\n\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'UPDATE ${
     schema.tableName
@@ -717,15 +710,11 @@ function generateJavascriptClass(
     .map((column) => `data.${column.name} || ${typeToValue(column.type)}`)
     .join(', ')}, data.id]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0]\n`;
-  classContent += `        } catch (error) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not update ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   // Delete
@@ -736,20 +725,15 @@ function generateJavascriptClass(
   classContent += `     */\n`;
 
   classContent += `    static async delete(id) {\n`;
-  classContent += `        const client = this.connectDB();\n`;
   classContent += `        const query = {\n`;
   classContent += `            text: 'DELETE FROM ${schema.tableName} WHERE id = $1 RETURNING *',\n`;
   classContent += `            values: [id]\n`;
   classContent += `        };\n`;
-  classContent += `        try {\n`;
-  classContent += `        await client.connect();\n`;
-  classContent += `        const result = await client.query(query);\n`;
-  classContent += `        return result.rows[0]\n`;
-  classContent += `        } catch (error) {\n`;
-  classContent += `            return { message: error.message };\n`;
-  classContent += `        } finally {\n`;
-  classContent += `            await client.end();\n`;
+  classContent += `        const result = await dbQuery(query);\n`;
+  classContent += `        if (!result) {\n`;
+  classContent += `            return { message: 'Could not delete ${className}' };\n`;
   classContent += `        }\n`;
+  classContent += `        return result[0];\n`;
   classContent += `    }\n\n`;
 
   classContent += `}\n\n`;
@@ -779,5 +763,7 @@ export const generateJavascriptServer = (schemaFile: Schema, path: string) => {
       },
       path,
     );
+
+    generateDbFile(path, 'js');
   }
 };
