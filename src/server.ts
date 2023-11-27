@@ -12,7 +12,7 @@ function generateDbFile(path: string, lang: string) {
     dbFile += `    connectionString: process.env.DATABASE_URL,\n`;
     dbFile += `});\n\n`;
 
-    dbFile += `async function dbQuery<T>({ text, values }: { text: string; values: any[] }) {\n`;
+    dbFile += `async function dbQuery<T>({ text, values }: { text: string; values: any[] }): T | null {\n`;
     dbFile += `    const client = await pool.connect();\n`;
     dbFile += `    try {\n`;
     dbFile += `        const result = await client.query<T>(text, values);\n`;
@@ -21,6 +21,7 @@ function generateDbFile(path: string, lang: string) {
     dbFile += `        }\n`;
     dbFile += `        return result.rows;\n`;
     dbFile += `    } catch (error) {\n`;
+    dbFile += `        console.error(error);\n`;
     dbFile += `        return null;\n`;
     dbFile += `    } finally {\n`;
     dbFile += `        client.release();\n`;
@@ -48,6 +49,7 @@ function generateDbFile(path: string, lang: string) {
     dbFile += `        }\n`;
     dbFile += `        return result.rows;\n`;
     dbFile += `    } catch (error) {\n`;
+    dbFile += `        console.error(error);\n`;
     dbFile += `        return null;\n`;
     dbFile += `    } finally {\n`;
     dbFile += `        client.release();\n`;
