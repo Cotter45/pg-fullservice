@@ -12,7 +12,7 @@ function generateDbFile(path: string, lang: string) {
     dbFile += `    connectionString: process.env.DATABASE_URL,\n`;
     dbFile += `});\n\n`;
 
-    dbFile += `async function dbQuery<T>({ text, values }: { text: string; values: any[] }): T | null {\n`;
+    dbFile += `async function dbQuery<T>({ text, values }: { text: string; values: any[] }): Promise<T | null> {\n`;
     dbFile += `    const client = await pool.connect();\n`;
     dbFile += `    try {\n`;
     dbFile += `        const result = await client.query<T>(text, values);\n`;
