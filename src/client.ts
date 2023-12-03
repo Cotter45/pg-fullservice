@@ -11,7 +11,17 @@ function generateTypescriptClass(
   },
   path: string,
 ) {
-  const className = snakeToPascal(schema.tableName);
+  let className = snakeToPascal(schema.tableName);
+
+  if (className.endsWith('s')) {
+    className = className.slice(0, -1);
+  } else if (className.endsWith('ies')) {
+    className = className.slice(0, -3) + 'y';
+  } else if (className.endsWith('ches')) {
+    className = className.slice(0, -2);
+  } else if (className.endsWith('oes')) {
+    className = className.slice(0, -2);
+  }
 
   let classContent = `class ${className} {\n`;
 
@@ -62,7 +72,17 @@ function generateJavascriptClass(
   },
   path: string,
 ) {
-  const className = snakeToPascal(schema.tableName);
+  let className = snakeToPascal(schema.tableName);
+
+  if (className.endsWith('s')) {
+    className = className.slice(0, -1);
+  } else if (className.endsWith('ies')) {
+    className = className.slice(0, -3) + 'y';
+  } else if (className.endsWith('ches')) {
+    className = className.slice(0, -2);
+  } else if (className.endsWith('oes')) {
+    className = className.slice(0, -2);
+  }
 
   let classContent = `class ${className} {\n`;
 
